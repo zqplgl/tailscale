@@ -3,7 +3,7 @@ services:
   tailscale-container-1:
     build: .
     container_name: tailscale-container-1
-    hostname: DGX1-01-tailscale-container-1
+    hostname: ${HOSTNAME}-tailscale-container-1
     ports: ["2222:22"]
     environment: ["TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh"]
     restart: always
@@ -12,7 +12,7 @@ services:
   tailscale-container-2:
     build: .
     container_name: tailscale-container-2
-    hostname: DGX1-01-tailscale-container-2
+    hostname: ${HOSTNAME}-tailscale-container-2
     ports: ["2223:22"]
     environment: ["TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh"]
     restart: always
