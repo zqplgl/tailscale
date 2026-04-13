@@ -1,0 +1,14 @@
+# Docker相关文件
+Dockerfile
+.dockerignore
+
+# 容器数据卷
+data/
+
+# SSH密钥文件
+id_rsa
+id_rsa.pub
+
+# 其他临时文件
+*.log
+*.tmp

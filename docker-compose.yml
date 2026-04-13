@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  tailscale-container-1:
+    build: .
+    container_name: tailscale-container-1
+    ports: ["2222:22"]
+    environment: ["TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh"]
+    restart: always
+    privileged: true
+    devices: ["/dev/net/tun:/dev/net/tun"]
+  tailscale-container-2:
+    build: .
+    container_name: tailscale-container-2
+    ports: ["2223:22"]
+    environment: ["TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh"]
+    restart: always
+    privileged: true
+    devices: ["/dev/net/tun:/dev/net/tun"]
