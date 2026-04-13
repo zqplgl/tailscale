@@ -15,6 +15,8 @@ fi
 # 配置SSH服务
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+echo "Port 22" >> /etc/ssh/sshd_config
+echo "Port 443" >> /etc/ssh/sshd_config
 
 # 启动SSH服务
 /usr/sbin/sshd
