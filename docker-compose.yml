@@ -1,18 +1,18 @@
 version: '3.8'
 services:
-  tailscale-container-1:
+  mpi_node1:
     build: .
-    container_name: tailscale-container-1
-    hostname: ${HOSTNAME}-tailscale-container-1
+    container_name: mpi_node_1
+    hostname: $(hostname -I | awk '{print $1}' | tr '.' '-')-mpi_node_1
     ports: ["2222:22"]
     environment: ["TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh"]
     restart: always
     privileged: true
     devices: ["/dev/net/tun:/dev/net/tun"]
-  tailscale-container-2:
+  mpi_node2:
     build: .
-    container_name: tailscale-container-2
-    hostname: ${HOSTNAME}-tailscale-container-2
+    container_name: mpi_node_2
+    hostname: $(hostname -I | awk '{print $1}' | tr '.' '-')-mpi_node_2
     ports: ["2223:22"]
     environment: ["TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh"]
     restart: always

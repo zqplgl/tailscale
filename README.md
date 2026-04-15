@@ -21,31 +21,31 @@
 ## 使用docker命令启动（不使用docker-compose）
 1. 构建镜像：
    ```bash
-   docker build -t tailscale-ssh-container .
+   docker build -t mpi-node .
    ```
 2. 启动容器1：
    ```bash
    docker run -d \
-     --name tailscale-container-1 \
-     --hostname DGX1-01-tailscale-container-1 \
+     --name mpi_node_1 \
+     --hostname $(hostname -I | awk '{print $1}' | tr '.' '-')-mpi_node_1 \
      --privileged \
      --device=/dev/net/tun:/dev/net/tun \
      -p 2222:22 \
      -e TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh \
      --restart always \
-     tailscale-ssh-container
+     mpi-node
    ```
 3. 启动容器2：
    ```bash
    docker run -d \
-     --name tailscale-container-2 \
-     --hostname DGX1-01-tailscale-container-2 \
+     --name mpi_node_2 \
+     --hostname $(hostname -I | awk '{print $1}' | tr '.' '-')-mpi_node_2 \
      --privileged \
      --device=/dev/net/tun:/dev/net/tun \
      -p 2223:22 \
      -e TS_AUTHKEY=tskey-auth-kamAr4M2YE11CNTRL-4xKcZuYBcK4Yu85PkjUXK4cT88U1vhWh \
      --restart always \
-     tailscale-ssh-container
+     mpi-node
    ```
 4. 查看容器状态：
    ```bash
